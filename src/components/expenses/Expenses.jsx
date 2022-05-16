@@ -3,13 +3,27 @@ import styled from 'styled-components'
 import ExpenseFilter from './ExpenseFilter'
 import { useState } from 'react'
 function Expenses({ expenses }) {
-  const [filteredExpenses, setFilteredExpenses] = useState('2020')
+  const [filteredExpenses, setFilteredExpenses] = useState('all')
   const handleFilteredDate = (filteredDate) => {
     setFilteredExpenses(filteredDate)
   }
+  const filteredExpensesList = expenses.filter(
+    (expense) => JSON.stringify(expense.date.getFullYear()) === filteredExpenses
+  )
+  const FilteredArr = filteredExpensesList.map((expense) => {
+    return (
+      <ExpenseItem
+        key={expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+      />
+    )
+  })
   const ExpensesArr = expenses.map((expense) => {
     return (
       <ExpenseItem
+        key={expense.id}
         title={expense.title}
         amount={expense.amount}
         date={expense.date}
@@ -22,7 +36,7 @@ function Expenses({ expenses }) {
         selected={filteredExpenses}
         onFilterDate={handleFilteredDate}
       />
-      {ExpensesArr}
+      {filteredExpenses === 'all' ? ExpensesArr : FilteredArr}
     </Wrap>
   )
 }
