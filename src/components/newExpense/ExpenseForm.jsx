@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
-const ExpenseForm = ({ onSaveExpenseData }) => {
+const ExpenseForm = ({ onSaveExpenseData, onCancelHandler }) => {
   const [expense, setExpense] = useState({
     title: '',
     amount: '',
@@ -58,6 +58,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
       </Container>
       <ButtonContainer>
         <button type="submit">Add Expense</button>
+        <button onClick={onCancelHandler}>Cancel</button>
       </ButtonContainer>
     </Form>
   )
