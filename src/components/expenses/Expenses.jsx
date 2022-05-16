@@ -1,42 +1,20 @@
-import ExpenseItem from './ExpenseItem'
 import styled from 'styled-components'
 import ExpenseFilter from './ExpenseFilter'
 import { useState } from 'react'
+import ExpensesList from './ExpensesList'
 function Expenses({ expenses }) {
   const [filteredExpenses, setFilteredExpenses] = useState('all')
   const handleFilteredDate = (filteredDate) => {
     setFilteredExpenses(filteredDate)
   }
-  const filteredExpensesList = expenses.filter(
-    (expense) => JSON.stringify(expense.date.getFullYear()) === filteredExpenses
-  )
-  const FilteredArr = filteredExpensesList.map((expense) => {
-    return (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    )
-  })
-  const ExpensesArr = expenses.map((expense) => {
-    return (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    )
-  })
+
   return (
     <Wrap>
       <ExpenseFilter
         selected={filteredExpenses}
         onFilterDate={handleFilteredDate}
       />
-      {filteredExpenses === 'all' ? ExpensesArr : FilteredArr}
+      <ExpensesList expenses={expenses} filteredExpenses={filteredExpenses} />
     </Wrap>
   )
 }
