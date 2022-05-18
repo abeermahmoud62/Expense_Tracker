@@ -34,7 +34,7 @@ const Info = styled.div`
     font-size: 1rem;
     font-weight: bold;
     color: white;
-    background-color: #40005d;
+    background-color: #c85c5c;
     border: 1px solid white;
     padding: 0.5rem;
     border-radius: 12px;
@@ -61,7 +61,7 @@ const Wrap = styled.div`
   align-items: center;
   padding: 0.5rem;
   margin: 1rem 0;
-  background-color: #4b4b4b;
+  background-color: #2f3a32;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 `

@@ -1,10 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import ExpenseItem from './ExpenseItem'
-const ExpensesList = ({ expenses, filteredExpenses }) => {
-  const filteredExpensesList = expenses.filter(
-    (expense) => JSON.stringify(expense.date.getFullYear()) === filteredExpenses
-  )
+const ExpensesList = ({ filteredExpensesList }) => {
   const FilteredArr = filteredExpensesList.map((expense) => {
     return (
       <ExpenseItem
@@ -15,25 +12,10 @@ const ExpensesList = ({ expenses, filteredExpenses }) => {
       />
     )
   })
-  const ExpensesArr = expenses.map((expense) => {
-    return (
-      <ExpenseItem
-        key={expense.id}
-        title={expense.title}
-        amount={expense.amount}
-        date={expense.date}
-      />
-    )
-  })
+
   return (
     <Container>
-      {filteredExpenses === 'all' ? (
-        ExpensesArr
-      ) : FilteredArr.length ? (
-        FilteredArr
-      ) : (
-        <Msg>No expenses found</Msg>
-      )}
+      {FilteredArr.length ? FilteredArr : <Msg>No expenses found</Msg>}
     </Container>
   )
 }

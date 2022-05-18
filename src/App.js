@@ -1,6 +1,7 @@
 import Expenses from './components/expenses/Expenses'
 import { useState } from 'react'
 import NewExpense from './components/newExpense/NewExpense'
+import styled from 'styled-components'
 const DummyExpenses = [
   {
     id: 'e1',
@@ -37,7 +38,7 @@ function App() {
   // )
   return (
     <div>
-      <h2>Let's get started</h2>
+      <Title>Expenses Tracker</Title>
       <NewExpense onAddNewExpense={addExpenseHandler} />
       <Expenses expenses={expensesData} />
     </div>
@@ -45,3 +46,9 @@ function App() {
 }
 
 export default App
+const Title = styled.h1`
+  font-family: 'Lora', serif;
+  font-weight: 600;
+  text-align: center;
+  font-size: 2.5rem;
+`

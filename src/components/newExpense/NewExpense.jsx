@@ -34,7 +34,7 @@ const NewExpense = ({ onAddNewExpense }) => {
 export default NewExpense
 
 const Container = styled.div`
-  background-color: #a892ee;
+  background-color: #7e8f83;
   padding: 1rem;
   margin: 2rem auto;
   width: 50rem;
@@ -47,13 +47,13 @@ const Button = styled.button`
   font: inherit;
   cursor: pointer;
   padding: 1rem 2rem;
-  border: 1px solid #40005d;
-  background-color: #40005d;
+  border: 1px solid #c85c5c;
+  background-color: #c85c5c;
   color: white;
   border-radius: 12px;
   margin-right: 1rem;
   &:hover {
-    background-color: #510674;
-    border-color: #510674;
+    background-color: #c85c5c;
+    border-color: #c85c5c;
   }
 `

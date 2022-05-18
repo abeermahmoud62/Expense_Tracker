@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { useState } from 'react'
-const ExpenseForm = ({ onSaveExpenseData, onCancelHandler }) => {
+const ExpenseForm = ({ onSaveExpenseData, onCancelHandler, setShowForm }) => {
   const [expense, setExpense] = useState({
     title: '',
     amount: '',
@@ -17,6 +17,7 @@ const ExpenseForm = ({ onSaveExpenseData, onCancelHandler }) => {
     e.preventDefault()
 
     onSaveExpenseData({ ...expense, date: new Date(expense.date) })
+    setShowForm(false)
     setExpense({ title: '', amount: '', date: '' })
   }
   return (
@@ -48,8 +49,8 @@ const ExpenseForm = ({ onSaveExpenseData, onCancelHandler }) => {
           <Label>Date</Label>
           <Input
             type="date"
-            min="2020-01-01"
-            max="2020-12-31"
+            min="2019-01-01"
+            max="2022-12-31"
             name="date"
             onChange={handleChange}
             value={expense.date}
@@ -95,14 +96,14 @@ const ButtonContainer = styled.div`
     font: inherit;
     cursor: pointer;
     padding: 1rem 2rem;
-    border: 1px solid #40005d;
-    background-color: #40005d;
+    border: 1px solid #c85c5c;
+    background-color: #c85c5c;
     color: white;
     border-radius: 12px;
     margin-right: 1rem;
     &:hover {
-      background-color: #510674;
-      border-color: #510674;
+      background-color: #c85c5c;
+      border-color: #c85c5c;
     }
   }
 `

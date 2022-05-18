@@ -2,19 +2,24 @@ import styled from 'styled-components'
 import ExpenseFilter from './ExpenseFilter'
 import { useState } from 'react'
 import ExpensesList from './ExpensesList'
+import ExpensesChart from './ExpensesChart'
 function Expenses({ expenses }) {
-  const [filteredExpenses, setFilteredExpenses] = useState('all')
+  const [filteredExpenses, setFilteredExpenses] = useState('2021')
   const handleFilteredDate = (filteredDate) => {
     setFilteredExpenses(filteredDate)
   }
-
+  const filteredExpensesList = expenses.filter(
+    (expense) => JSON.stringify(expense.date.getFullYear()) === filteredExpenses
+  )
   return (
     <Wrap>
       <ExpenseFilter
         selected={filteredExpenses}
         onFilterDate={handleFilteredDate}
+        filteredExpensesList={filteredExpensesList}
       />
-      <ExpensesList expenses={expenses} filteredExpenses={filteredExpenses} />
+      <ExpensesChart expenses={filteredExpensesList} />
+      <ExpensesList filteredExpensesList={filteredExpensesList} />
     </Wrap>
   )
 }
